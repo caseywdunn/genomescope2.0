@@ -100,7 +100,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
   model_fit_fullscore   = c(0,0,0)
   model_fit_uniquescore = c(0,0,0)
 
-  plot_size=2000
+  plot_size=7
   font_size=1.2
   resolution=300
 
@@ -111,7 +111,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
   } else {
     ylabel_transform = paste("Coverage^", transform_exp, "*Frequency", sep="")
   }
-  svg(paste(foldername, "/", arguments$name_prefix, "linear_plot.svg", sep=""),
+  pdf(paste(foldername, "/", arguments$name_prefix, "linear_plot.pdf", sep=""),
   width=plot_size, height=plot_size)
   par(mar = c(5.1,4.1,6.1,2.1))
   plot(kmer_hist_orig, type="n", main="GenomeScope Profile\n\n\n",
@@ -125,7 +125,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
 #  }
   box(col="black")
 
-  svg(paste(foldername, "/", arguments$name_prefix, "transformed_linear_plot.svg", sep=""),
+  pdf(paste(foldername, "/", arguments$name_prefix, "transformed_linear_plot.pdf", sep=""),
   width=plot_size, height=plot_size)
   par(mar = c(5.1,4.1,6.1,2.1))
   plot(kmer_hist_transform, type="n", main="GenomeScope Profile\n\n\n",
@@ -140,7 +140,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
   box(col="black")
 
   ## Make a second plot in log space over entire range
-  svg(paste(foldername, "/", arguments$name_prefix, "log_plot.svg", sep=""),
+  pdf(paste(foldername, "/", arguments$name_prefix, "log_plot.pdf", sep=""),
   width=plot_size, height=plot_size)
   par(mar = c(5.1,4.1,6.1,2.1))
   plot(kmer_hist_orig, type="n", main="GenomeScope Profile\n\n\n",
@@ -153,7 +153,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
   }
   box(col="black")
 
-  svg(paste(foldername, "/", arguments$name_prefix, "transformed_log_plot.svg", sep=""),
+  pdf(paste(foldername, "/", arguments$name_prefix, "transformed_log_plot.pdf", sep=""),
   width=plot_size, height=plot_size)
   par(mar = c(5.1,4.1,6.1,2.1))
   plot(kmer_hist_transform, type="n", main="GenomeScope Profile\n\n\n",
@@ -820,7 +820,7 @@ report_results<-function(kmer_hist,kmer_hist_orig, k, p, container, foldername, 
 
 	  ## Fitted histogram  
 
-	  svg(paste(foldername, "/fitted_hist.svg", sep=""), height = plot_size, width = plot_size)
+	  pdf(paste(foldername, "/fitted_hist.pdf", sep=""), height = plot_size, width = plot_size)
 	  layout(matrix(c(1,2), nrow=2, byrow = TRUE),heights=lcm(c(11,5.5)))
 	  par(mar=c(0,5,1,1))
   
